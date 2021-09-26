@@ -1,0 +1,22 @@
+---
+# tasks file for k3s-config-worker
+- name: Connect on master and read node-join token
+  slurp:
+    src: /var/lib/rancher/k3s/server/node-token
+  delegate_to: "{{ master_ip }}"
+  run_once: true
+  register: join_token
+
+- name: Store join node-token
+  set_fact:
+    k3s_join_token: "{{ join_token.content | b64decode | regex_replace('\n', '') }}"
+  run_once: true
+
+- name: Copy K3s service file
+  template:
+    src: "k3s.service.j2"
+    dest: "/etc/systemd/system/k3s-node.service"
+    owner: root
+    group: root
+    mode: 0755
+  notify: restart_k3s

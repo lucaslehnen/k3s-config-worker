@@ -1,0 +1,16 @@
+galaxy_info:
+  role_name: k3s_config_worker
+  namespace: tchecode
+  author: Lucas Lehnen
+  description: Configure a k3s node to be a worker role
+  company: Tchê Code
+  license: MIT
+  min_ansible_version: 2.1
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
+  galaxy_tags:
+    - k3s
+
+dependencies: []
