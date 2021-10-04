@@ -1,6 +1,8 @@
 Configure a k3s node to be a worker node and join it on the cluster
 =========
 
+DEPRECATED: Migrate to https://github.com/lucaslehnen/tchecode.k3s
+
 This role can be used together with:
 
   - https://github.com/lucaslehnen/k3s-install -> prepare
